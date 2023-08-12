@@ -6,5 +6,11 @@ pipeline{
         checkout scm
       }
     }
+    stage("sonarscan"){
+      steps{
+        withSonarQubeEnv('SonarServer')
+        sh "sonar-scanner"
+      }
+    }
   }
 }
