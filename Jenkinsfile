@@ -8,8 +8,12 @@ pipeline{
     }
     stage("sonarscan"){
       steps{
-        withSonarQubeEnv('SonarServer')
-        sh "sonar-scanner"
+        script{
+          withSonarQubeEnv('SonarServer'){
+           sh "sonar-scanner"  
+          }
+        }
+        
       }
     }
   }
